@@ -5,7 +5,7 @@ test('test', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Email or phone' }).click();
     await page.getByRole('textbox', { name: 'Email or phone' }).fill('ta06448@gmail.com');
     await page.getByRole('textbox', { name: 'Password' }).click();
-    await page.getByRole('textbox', { name: 'Password' }).fill('tamilsathya');
+    await page.getByRole('textbox', { name: 'Password' }).fill('passsword');
     await page.getByRole('button', { name: 'Sign in', exact: true }).click();
     await page.waitForTimeout(15000);
 
