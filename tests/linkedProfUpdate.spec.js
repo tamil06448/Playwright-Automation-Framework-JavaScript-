@@ -1,21 +1,63 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+test('LinkedIn Profile Update', async ({ page }) => {
+
+    // Increase TOTAL test timeout
+    test.setTimeout(180000); // 3 minutes
+
     await page.goto('https://www.linkedin.com/login/');
     await page.getByRole('textbox', { name: 'Email or phone' }).click();
     await page.getByRole('textbox', { name: 'Email or phone' }).fill('ta06448@gmail.com');
     await page.getByRole('textbox', { name: 'Password' }).click();
-    await page.getByRole('textbox', { name: 'Password' }).fill('passsword');
+    await page.getByRole('textbox', { name: 'Password' }).fill('tamil');
+    // await page.getByRole('textbox', { name: 'Password' }).fill('passsword');
     await page.getByRole('button', { name: 'Sign in', exact: true }).click();
-    await page.waitForTimeout(15000);
+    // =====================================================
+    // 5. WAIT FOR MOBILE APPROVAL
+    // =====================================================
 
-    await page.getByRole('link', { name: 'Tamilarasan R, Senior QA' }).click();
-    await page.getByTestId('lazy-column').getByRole('link', { name: 'Edit profile' }).click();
+    console.log('Waiting for LinkedIn mobile approval...');
+    const profileLink = page
+        .locator('a[href*="/in/"]')
+        .filter({ hasText: /Tamilarasan R/i })
+        .first();
+
+    // Playwright waits until profile link appears
+    // You have up to 2 minutes to approve on mobile
+    await expect(profileLink).toBeVisible({
+        timeout: 150000
+    });
+
+    console.log('Mobile approval completed.');
+    console.log('LinkedIn profile page is available.');
+    // =====================================================
+    // 6. GO TO PROFILE
+    // =====================================================
+    await profileLink.click();
+    await page.waitForLoadState('domcontentloaded');
+    console.log('Profile opened.');
+    // =====================================================
+    // 7. EDIT PROFILE
+    // =====================================================
+    const editProfile = page
+        .getByTestId('lazy-column')
+        .getByRole('link', { name: 'Edit profile' });
+
+    await expect(editProfile).toBeVisible({
+        timeout: 15000
+    });
+
+    await editProfile.click();
+    // =====================================================
+    // 8. WAIT FOR PROFILE EDIT PAGE
+    // =====================================================
+
     await page.waitForTimeout(2000);
+
+    console.log('Edit profile opened.');
     await page.getByRole('button', { name: 'Save' }).click();
     await page.waitForTimeout(3000);
     await page.getByRole('link', { name: 'Edit about' }).click();
-    //   await page.waitForTimeout(3000);
     // Wait for editor to appear
     const editor = page.getByTestId(
         'ui-core-tiptap-text-editor-wrapper'
@@ -38,7 +80,6 @@ test('test', async ({ page }) => {
     if (count > 0) {
         // Text exists → remove it
         await lineToRemove.click();
-
         await page.keyboard.press('Home');
         await page.keyboard.press('Shift+End');
         await page.keyboard.press('Backspace');
@@ -56,7 +97,6 @@ test('test', async ({ page }) => {
     await page.waitForTimeout(3000);
     await page.getByRole('link', { name: 'Edit about' }).click();
     await page.waitForTimeout(3000);
-
     await page.getByRole('textbox', { name: 'About' }).fill(
         `Senior QA Engineer with 4.5+ years of experience in Manual, API and Database Testing, focused on delivering reliable and high-quality software.
 My experience includes:
