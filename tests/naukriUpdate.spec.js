@@ -5,7 +5,7 @@ test('Naukri Profile Update', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Enter Email ID / Username' }).click();
   await page.getByRole('textbox', { name: 'Enter Email ID / Username' }).fill('ta06448@gmail.com');
   await page.getByRole('textbox', { name: 'Enter Password' }).click();
-  await page.getByRole('textbox', { name: 'Enter Password' }).fill('Tamilsathya@0306');
+  await page.getByRole('textbox', { name: 'Enter Password' }).fill('Tamil');
   await page.getByText('Show', { exact: true }).click();
   await page.getByRole('button', { name: 'Login', exact: true }).click();
   await page.waitForTimeout(3000);
