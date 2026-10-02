@@ -5,12 +5,17 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 const fs = require('fs');
 
-const EXCEL_FILE = path.join(__dirname, 'QA_Outreach.xlsx');
+const PROJECT_ROOT = path.resolve(__dirname, '..');
+
+const EXCEL_FILE = path.join(
+  PROJECT_ROOT,
+  'QA_Outreach.xlsx'
+);
 
 const RESUME_FILE = path.join(
-    __dirname,
-    'resume',
-    'Tamilarasan_QA_Engineer_Playwright.pdf'
+  PROJECT_ROOT,
+  'resume',
+  'Tamilarasan_QA_Engineer_Playwright.pdf'
 );
 
 // Keep false for preview mode.

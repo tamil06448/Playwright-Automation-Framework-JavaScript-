@@ -12,10 +12,6 @@ dotenv.config({
 // Test 1 creates linkedin_hiring_last24h.csv
 // Test 2 reads that CSV and creates QA_Outreach.xlsx
 test.describe.configure({ mode: 'serial' });
-
-
-
-
 // ############################################################
 // HELPERS FOR STEP 2 - EMAIL OUTREACH EXCEL  
 // ############################################################
