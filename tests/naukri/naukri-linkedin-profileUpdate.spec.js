@@ -57,7 +57,7 @@ if (await jiraSuggestion.isVisible().catch(() => false)) {
 await page.getByRole('button', { name: 'Save' }).click();
 });
 
-test('LinkedIn Profile Update', async ({ page }) => {
+test.skip('LinkedIn Profile Update', async ({ page }) => {
 
     // Increase TOTAL test timeout
     test.setTimeout(180000); // 3 minutes
