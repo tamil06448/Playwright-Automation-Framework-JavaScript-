@@ -257,7 +257,7 @@ function readCSV(filePath) {
             filePath,
             'utf8'
         )
-        .replace(/^\uFEFF/, '');
+            .replace(/^\uFEFF/, '');
 
 
     if (
@@ -1054,15 +1054,15 @@ async function createExcelFile() {
             row.getCell(7)
                 .alignment = {
 
-                    vertical:
-                        'top',
+                vertical:
+                    'top',
 
-                    horizontal:
-                        'left',
+                horizontal:
+                    'left',
 
-                    wrapText:
-                        true
-                };
+                wrapText:
+                    true
+            };
 
 
             // ------------------------------------------------
@@ -1072,15 +1072,15 @@ async function createExcelFile() {
             row.getCell(6)
                 .alignment = {
 
-                    vertical:
-                        'top',
+                vertical:
+                    'top',
 
-                    horizontal:
-                        'left',
+                horizontal:
+                    'left',
 
-                    wrapText:
-                        true
-                };
+                wrapText:
+                    true
+            };
 
 
             // ------------------------------------------------
@@ -1090,15 +1090,15 @@ async function createExcelFile() {
             row.getCell(8)
                 .alignment = {
 
-                    vertical:
-                        'top',
+                vertical:
+                    'top',
 
-                    horizontal:
-                        'left',
+                horizontal:
+                    'left',
 
-                    wrapText:
-                        true
-                };
+                wrapText:
+                    true
+            };
 
 
             // ------------------------------------------------
@@ -1324,7 +1324,10 @@ test('LinkedIn Hiring Post Extractor', async ({ page }) => {
             'Complete the verification manually in the browser.'
         );
 
-        await page.pause();
+        // await page.pause();
+        if (!process.env.CI) {
+            await page.pause();
+        }
 
         // Wait after manual verification
         await page.waitForTimeout(3000);
@@ -2590,10 +2593,10 @@ test('LinkedIn Hiring Post Extractor', async ({ page }) => {
             return (
                 age >= 0 &&
                 age <=
-                    24 *
-                    60 *
-                    60 *
-                    1000
+                24 *
+                60 *
+                60 *
+                1000
             );
         }
 
@@ -2693,7 +2696,7 @@ test('LinkedIn Hiring Post Extractor', async ({ page }) => {
             )
 
         ].join(',') +
-        '\n';
+            '\n';
     }
 
     fs.writeFileSync(
