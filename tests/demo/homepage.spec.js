@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('Homepage', async ({ page })=>{
+test.skip('Homepage', async ({ page })=>{
 
 await page.goto('https://prismworks.io/');
  

@@ -33,6 +33,12 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
+         tests/auth/loginpage.spec.js
+         tests/demo/loginpage1.spec.js
+         tests/demo/codegen.spec.js
+         tests/demo/example-test.spec.js
+         tests/demo/homepage.spec.js
+         tests/demo/screenshot.spec.js
 
       - name: Upload Playwright report
         if: ${{ !cancelled() }}
