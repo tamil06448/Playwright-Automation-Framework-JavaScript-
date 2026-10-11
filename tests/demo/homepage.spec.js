@@ -14,7 +14,8 @@ page.close();
 
 })
 
-test.only('homepage1', async({page})=> {
+// test.only('homepage1', async({page})=> {
+test('homepage1', async({page})=> {
     await page.goto('https://cmms.tamidas.com/login');
     
     const loginTitle = await page.title();

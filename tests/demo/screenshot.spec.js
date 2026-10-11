@@ -19,7 +19,8 @@ test ('Full screenshot', async ({ page })=> {
    await page.screenshot({ path : 'tests\screenshot'+ Date.now()+ 'Fullpage.png', fullPage : true })
 })
 
-test.only ( 'Particular screenshot', async({ page }) => {
+// test.only ( 'Particular screenshot', async({ page }) => {
+test ( 'Particular screenshot', async({ page }) => {
 
     await page.goto('https://prismworks.io/');
      await page.locator('iframe').contentFrame().getByRole('textbox', { name: 'username' }).fill('veeralakshmanan@daacoworks.com');
