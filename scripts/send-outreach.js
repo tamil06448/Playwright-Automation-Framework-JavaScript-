@@ -15,7 +15,7 @@ const EXCEL_FILE = path.join(
 const RESUME_FILE = path.join(
   PROJECT_ROOT,
   'resume',
-  'Tamilarasan_QA_Engineer_Playwright.pdf'
+  'Tamilarasan_QA_Engineer.pdf'
 );
 
 // Keep false for preview mode.
@@ -207,7 +207,7 @@ async function main() {
                 attachments: [
                     {
                         filename:
-                            'Tamilarasan_QA_Engineer_Playwright.pdf',
+                            'Tamilarasan_QA_Engineer.pdf',
                         path: RESUME_FILE,
                         contentType: 'application/pdf'
                     }
