@@ -8,7 +8,7 @@ import path from 'path';
 
 if (!process.env.NAUKRI_EMAIL || !process.env.NAUKRI_PASSWORD) {
     throw new Error(
-        'NAUKRI_EMAIL or NAUKRI_PASSWORD is missing in .env'
+        'NAUKRI_EMAIL or NAUKRI_PASSWORD is missing from environment variables'
     );
 }
 
