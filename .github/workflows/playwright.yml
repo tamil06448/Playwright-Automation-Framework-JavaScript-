@@ -39,6 +39,7 @@ jobs:
          tests/demo/example-test.spec.js
          tests/demo/homepage.spec.js
          tests/demo/screenshot.spec.js
+         tests/naukri/naukri-profile-update.spec.js
 
       - name: Upload Playwright report
         if: ${{ !cancelled() }}
